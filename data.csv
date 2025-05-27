@@ -1,6 +1,19 @@
-Hours_Studied,Marks_Scored
-2,50
-3,60
-4,70
-5,80
-6,90
+Actual:    [1, 0, 1, 1, 0, 1, 0]
+Predicted: [1, 0, 1, 0, 0, 1, 1]
+```
+
+| Index | Actual | Predicted | Correct? | Type           |
+| ----- | ------ | --------- | -------- | -------------- |
+| 0     | 1      | 1         | ✅        | True Positive  |
+| 1     | 0      | 0         | ✅        | True Negative  |
+| 2     | 1      | 1         | ✅        | True Positive  |
+| 3     | 1      | 0         | ❌        | False Negative |
+| 4     | 0      | 0         | ✅        | True Negative  |
+| 5     | 1      | 1         | ✅        | True Positive  |
+| 6     | 0      | 1         | ❌        | False Positive |
+
+* True Positives (TP) = 3
+* False Negatives (FN) = 1
+
+```
+Recall = 3 / (3 + 1) = 0.75 or 75%
