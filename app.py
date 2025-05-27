@@ -1,22 +1,16 @@
 import streamlit as st
-import pandas as pd
-from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import recall_score
 
-st.title("Diabetes Prediction App")
+st.title("📢 Recall Score Example")
 
-data = pd.read_csv("data.csv")
-st.write(data)
+# Predefined labels
+y_true = [1, 0, 1, 1, 0, 1, 0]
+y_pred = [1, 0, 1, 0, 0, 1, 1]
 
-x = data[['Age', 'Glucose_Level']]
-y = data['Diabetes'].map({'No': 0, 'Yes': 1})
+# Show data
+st.write("✅ Actual Labels:", y_true)
+st.write("📌 Predicted Labels:", y_pred)
 
-model = LogisticRegression()
-model.fit(x, y)
-
-age = st.number_input("Enter Age:", 18.0, 100.0, step=1.0)
-glucose = st.number_input("Enter Glucose Level:", 50.0, 200.0, step=1.0)
-
-prediction = model.predict([[age, glucose]])[0]
-result = "Yes" if prediction == 1 else "No"
-
-st.write("Diabetes Prediction:", result)
+# Calculate recall
+recall = recall_score(y_true, y_pred)
+st.success(f"🎯 Recall Score: {recall:.2f}")
