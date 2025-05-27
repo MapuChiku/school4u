@@ -4,7 +4,7 @@ from sklearn.linear_model import LogisticRegression
 
 st.title("Diabetes Prediction App")
 
-data = pd.read_csv("diabetes_data.csv")
+data = pd.read_csv("data.csv")
 st.write(data)
 
 x = data[['Age', 'Glucose_Level']]
