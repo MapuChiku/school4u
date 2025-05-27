@@ -1,18 +1,16 @@
 import streamlit as st
-import pandas as pd
-from sklearn.linear_model import LinearRegression
+from sklearn.metrics import recall_score
 
-st.title("Linear Regression with Streamlit")
+st.title("📢 Recall Score Example")
 
-data = pd.read_csv("data.csv")
-st.write(data)
+# Predefined labels
+y_true = [1, 0, 1, 1, 0, 1, 0]
+y_pred = [1, 0, 1, 0, 0, 1, 1]
 
-x = data[['Hours_Studied']]
-y = data['Marks_Scored']
+# Show data
+st.write("✅ Actual Labels:", y_true)
+st.write("📌 Predicted Labels:", y_pred)
 
-model = LinearRegression()
-model.fit(x, y)
-
-hours = st.number_input("Enter Hours Studied:", 1.0, 10.0, step=0.5)
-prediction = model.predict([[hours]])
-st.write("Predicted Marks:", prediction[0])
+# Calculate recall
+recall = recall_score(y_true, y_pred)
+st.success(f"🎯 Recall Score: {recall:.2f}")
